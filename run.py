@@ -4,9 +4,7 @@ from config import global_config
 from public.common import send_mail
 import os
 
-print(1)
-
-
+print(111)
 
 
 if __name__ == '__main__':
