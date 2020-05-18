@@ -4,9 +4,10 @@ from selenium.webdriver.common.by import By
 from public.po.base_view import BaseView
 from time import sleep
 
-driver = desired()
-#
+
+# 登录
 def login():
+    driver = desired()
     login = LoginPage(driver)
     login.login()
     return login
