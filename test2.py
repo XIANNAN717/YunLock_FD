@@ -14,9 +14,9 @@ def login():
 #
 def lock():
     l = login()
-    count_num = 10000  #
-    actual_count_num = 0  #
-    succ_num = 0  #
+    count_num = 10000  #  设定的开锁总数统计
+    actual_count_num = 0  # 实际开锁总数统计
+    succ_num = 0  # 开锁成功次数
     for t in range(count_num):
         actual_count_num += 1
         try:
@@ -28,10 +28,9 @@ def lock():
             # sleep(10)
             # unlock_02_text.click()
             succ_num += 1
-            print("123".format(succ_num))
+            print("第{}次成功开锁".format(succ_num))
             sleep(20)
         except:
-            sleep(10)
             login()
 
 
