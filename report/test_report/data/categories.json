@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "TypeError: argument of type 'int' is not iterable",
+      "children" : [ {
+        "name" : "test_new_room",
+        "uid" : "25c5956569e017d",
+        "parentUid" : "383e294e45c0a9d8c85cc6eba2340c67",
+        "status" : "broken",
+        "time" : {
+          "start" : 1589424276784,
+          "stop" : 1589424282625,
+          "duration" : 5841
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "383e294e45c0a9d8c85cc6eba2340c67"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ]
+}

@@ -1,0 +1,41 @@
+{
+  "f76b5db9dbf313a5688b1cc81500eea1" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "25c5956569e017d",
+      "status" : "broken",
+      "statusDetails" : "TypeError: argument of type 'int' is not iterable",
+      "time" : {
+        "start" : 1589424276784,
+        "stop" : 1589424282625,
+        "duration" : 5841
+      }
+    } ]
+  },
+  "9a5437edf5240c41376bfc78c4da6340" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "631bc3aff8efa218",
+      "status" : "passed",
+      "time" : {
+        "start" : 1589425788365,
+        "stop" : 1589425794412,
+        "duration" : 6047
+      }
+    } ]
+  }
+}

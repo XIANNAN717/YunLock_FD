@@ -1,0 +1,21 @@
+[ {
+  "uid" : "25c5956569e017d",
+  "name" : "test_new_room",
+  "time" : {
+    "start" : 1589424276784,
+    "stop" : 1589424282625,
+    "duration" : 5841
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "631bc3aff8efa218",
+  "name" : "test_new_room",
+  "time" : {
+    "start" : 1589425788365,
+    "stop" : 1589425794412,
+    "duration" : 6047
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

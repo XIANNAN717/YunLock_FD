@@ -1,0 +1,144 @@
+{
+  "uid" : "631bc3aff8efa218",
+  "name" : "test_new_room",
+  "fullName" : "test_case.test_new_room.TestNewRoom#test_new_room",
+  "historyId" : "9a5437edf5240c41376bfc78c4da6340",
+  "time" : {
+    "start" : 1589425788365,
+    "stop" : 1589425794412,
+    "duration" : 6047
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "app_login",
+    "time" : {
+      "start" : 1589425771222,
+      "stop" : 1589425788364,
+      "duration" : 17142
+    },
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "登陆",
+      "time" : {
+        "start" : 1589425771222,
+        "stop" : 1589425788364,
+        "duration" : 17142
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : false,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : true,
+    "stepsCount" : 1
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "8a643ed1724cd0b0",
+      "name" : "log",
+      "source" : "8a643ed1724cd0b0.txt",
+      "type" : "text/plain",
+      "size" : 530
+    } ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 1,
+    "hasContent" : true,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ {
+    "name" : "app_login::0",
+    "time" : {
+      "start" : 1589425794413,
+      "stop" : 1589425795208,
+      "duration" : 795
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test_case"
+  }, {
+    "name" : "suite",
+    "value" : "test_new_room"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestNewRoom"
+  }, {
+    "name" : "host",
+    "value" : "PC20190318"
+  }, {
+    "name" : "thread",
+    "value" : "15764-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.test_new_room"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "abfaf1b6fba0e730",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert '1' == 1",
+      "time" : {
+        "start" : 1589425698809,
+        "stop" : 1589425704714,
+        "duration" : 5905
+      }
+    }, {
+      "uid" : "7bd8f58f226b6d5e",
+      "status" : "broken",
+      "statusDetails" : "TypeError: argument of type 'int' is not iterable",
+      "time" : {
+        "start" : 1589425651058,
+        "stop" : 1589425657505,
+        "duration" : 6447
+      }
+    }, {
+      "uid" : "a0a15b8b3ed9d590",
+      "status" : "broken",
+      "statusDetails" : "TypeError: argument of type 'int' is not iterable",
+      "time" : {
+        "start" : 1589424836511,
+        "stop" : 1589424842401,
+        "duration" : 5890
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "631bc3aff8efa218.json",
+  "parameterValues" : [ ]
+}

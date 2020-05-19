@@ -1,0 +1,51 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "test_new_room",
+    "children" : [ {
+      "name" : "TestNewRoom",
+      "children" : [ {
+        "name" : "test_new_room",
+        "uid" : "25c5956569e017d",
+        "parentUid" : "f7cc170dd6beeaebcdad4b2a9ca537c9",
+        "status" : "broken",
+        "time" : {
+          "start" : 1589424276784,
+          "stop" : 1589424282625,
+          "duration" : 5841
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "f7cc170dd6beeaebcdad4b2a9ca537c9"
+    } ],
+    "uid" : "0aa23fdefd73283685788ceee313f52b"
+  }, {
+    "name" : "test_case",
+    "children" : [ {
+      "name" : "test_new_room",
+      "children" : [ {
+        "name" : "TestNewRoom",
+        "children" : [ {
+          "name" : "test_new_room",
+          "uid" : "631bc3aff8efa218",
+          "parentUid" : "71d5e6e2b0e3ba80e5c0f8072d98a821",
+          "status" : "passed",
+          "time" : {
+            "start" : 1589425788365,
+            "stop" : 1589425794412,
+            "duration" : 6047
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "71d5e6e2b0e3ba80e5c0f8072d98a821"
+      } ],
+      "uid" : "2d75af663106411e344bd34ef7327817"
+    } ],
+    "uid" : "86abcc46617c603d802c3e378b13740e"
+  } ]
+}

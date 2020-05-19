@@ -1,0 +1,8 @@
+INFO     public.po.login_page:log.py:46 MobileText is setValues!
+INFO     public.po.login_page:log.py:46 CodeText is setValues!
+INFO     public.po.login_page:log.py:46 LoginBtn is click
+INFO     public.po.new_room_page:log.py:46 new_oder_Btn is click
+INFO     public.po.new_room_page:log.py:46 RoomTypeText is setValues!
+INFO     public.po.new_room_page:log.py:46 RoomNameText is setValues!
+INFO     public.po.new_room_page:log.py:46 RoomDescriptionText is setValues!
+INFO     public.po.new_room_page:log.py:46 ConfirmBtn is click
