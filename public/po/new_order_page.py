@@ -125,7 +125,7 @@ class NewOderPage(BaseView):
         # print("入住人姓名：",tenant_name_value)
         # tenant_name_text.send_keys(tenant_name_value)
         logger.info("TenantNameText is setValues!")
-        self.get_screeShot()
+
 
     # “入住人手机号”文本区域
     def tenant_mobile(self, tenant_mobile_value):
@@ -133,7 +133,7 @@ class NewOderPage(BaseView):
         tenant_mobile_text.click()
         AdbShell.input_text(tenant_mobile_value)
         logger.info("TenantMobileText is setValues!")
-        self.get_screeShot()
+
 
     # 提交订单时的“确定”按钮
     def confirm_button(self):
@@ -158,6 +158,7 @@ class NewOderPage(BaseView):
             return "新建订单成功"
         except:
             print("新建订单失败")
+            self.get_screeShot()
 
 
 

@@ -44,7 +44,7 @@ def send_report(file_new):
 
     smtp.quit()
 
-    print("Test Report has send out!!")
+    print("Test report has send out!!")
 
 
 # 查找测试报告，找出最新的测试报告

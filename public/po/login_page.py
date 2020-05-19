@@ -28,7 +28,6 @@ class LoginPage(BaseView):
             AdbShell.input_text(mobileValue)
             # MobileText.send_keys(mobileValue)
             logger.info("MobileText is setValues!")
-            self.get_screeShot()
         except:
             logger.info("手机号输入失败!")
 
@@ -41,7 +40,6 @@ class LoginPage(BaseView):
             AdbShell.input_text(CodeValue)
             # MobileText.send_keys(mobileValue)
             logger.info("CodeText is setValues!")
-            self.get_screeShot()
         except:
             logger.info("验证码输入失败!")
 
@@ -53,14 +51,18 @@ class LoginPage(BaseView):
 
     # 登录
     def login(self):
-        self.wait_activity(".MainActivity", 30)
-        mobileValue = int(ReadExcel("Login.xlsx", "Sheet1").read_excel(1, 0))
-        codeValue = int(ReadExcel("Login.xlsx", "Sheet1").read_excel(2, 0))
-        # print(mobileValue)
-        # print(codeValue)
-        self.mobile_set_text(mobileValue)
-        self.code_set_text(codeValue)
-        self.login_button()
+        try:
+            self.wait_activity(".MainActivity", 30)
+            mobileValue = int(ReadExcel("Login.xlsx", "Sheet1").read_excel(1, 0))
+            codeValue = int(ReadExcel("Login.xlsx", "Sheet1").read_excel(2, 0))
+            # print(mobileValue)
+            # print(codeValue)
+            self.mobile_set_text(mobileValue)
+            self.code_set_text(codeValue)
+            self.login_button()
+        except:
+            print("登录失败")
+            self.get_screeShot()
 
 
 # 调试

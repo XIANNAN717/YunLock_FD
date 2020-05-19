@@ -44,9 +44,6 @@ class BaseView():
             self.get_screeShot()
 
 
-
-
-
     # 获得机器屏幕大小x,y
     def get_size(self):
         x = self.driver.get_window_size()['width']
