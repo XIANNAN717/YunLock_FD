@@ -1,7 +1,6 @@
 from public.common.desired_caps import desired
 from public.po.login_page import LoginPage
 from selenium.webdriver.common.by import By
-from public.po.base_view import BaseView
 from time import sleep
 
 
