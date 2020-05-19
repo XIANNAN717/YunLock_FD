@@ -22,4 +22,4 @@ class TestTemporaryAuthorization():
 if __name__ == '__main__':
     pytest.main(['-sq', __file__, '../report/temp'])
     # 把json文件生成测试报告
-    os.system('allure generate ../report/temp -o ../report/test_report/  --clean')
+    # os.system('allure generate ../report/temp -o ../report/test_report/  --clean')

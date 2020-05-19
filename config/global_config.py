@@ -16,16 +16,16 @@ read_config = ReadConfigIni(os.path.join(file_path, "config.ini"))
 project_path = read_config.getConfigValue("project", "project_path")
 
 # 日志路径
-log_path = os.path.join(project_path,"Report","log")
+log_path = os.path.join(project_path,"report","log")
 
 # 错误截图路径
-Images_path = os.path.join(project_path,"Report","Images")
+Images_path = os.path.join(project_path,"report","images")
 
 # 测试用例路径
-TestCase_path = os.path.join(project_path,"TestCase")
+TestCase_path = os.path.join(project_path,"test_case")
 
 # 测试报告路径
-report_path = os.path.join(project_path,"Report","TestReport")
+report_path = os.path.join(project_path,"report","test_report")
 
 # 测试数据路径
 data_path = os.path.join(project_path,"data")

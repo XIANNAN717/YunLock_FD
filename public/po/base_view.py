@@ -21,6 +21,13 @@ class BaseView():
         AC = self.driver.current_activity
         # print(AC)
 
+        # 截图
+    def get_screeShot(self):
+        now = time.strftime("%Y-%m-%d %H_%M_%S", time.localtime(time.time()))  # 获取当前系统时间
+        imageName = img_path + "\\" + now + ".png"  # 拼接截图名称
+        self.driver.get_screenshot_as_file(imageName)
+
+
     # 查找元素二次封装
     def find_element(self,*loc):
         """
@@ -32,14 +39,12 @@ class BaseView():
             WebDriverWait(self.driver,60).until(EC.visibility_of_element_located(loc))
             return self.driver.find_element(*loc)
         except:
-            # print("{}该activity中未找到{}元素" .format(self,loc))
             print("元素未找到")
+            print("{}该activity中未找到{}元素" .format(self,loc))
+            self.get_screeShot()
 
-    # 截图
-    def get_screeShot(self):
-        now = time.strftime("%Y-%m-%d %H_%M_%S",time.localtime(time.time()))  # 获取当前系统时间
-        imageName = img_path + "\\" + now + ".png" # 拼接截图名称
-        self.driver.get_screenshot_as_file(imageName)
+
+
 
 
     # 获得机器屏幕大小x,y
