@@ -70,3 +70,7 @@ if __name__ == '__main__':
     driver = desired()
     Login = LoginPage(driver)
     Login.login()
+    import time
+    time.sleep(5)
+    Login.swipe_down()
+    Login.swipe_down()

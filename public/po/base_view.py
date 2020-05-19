@@ -36,12 +36,16 @@ class BaseView():
         :return:
         """
         try:
-            WebDriverWait(self.driver,60).until(EC.visibility_of_element_located(loc))
-            return self.driver.find_element(*loc)
+            return WebDriverWait(self.driver,60).until(EC.visibility_of_element_located(loc))
         except:
-            print("元素未找到")
-            print("{}该activity中未找到{}元素" .format(self,loc))
-            self.get_screeShot()
+            try:
+                return self.driver.find_element(*loc)
+            except:
+                print("元素未找到")
+                print("{}该activity中未找到{}元素".format(self, loc))
+                self.get_screeShot()
+                raise (TimeoutError)
+
 
 
     # 获得机器屏幕大小x,y
@@ -50,37 +54,36 @@ class BaseView():
         y = self.driver.get_window_size()['height']
         return (x, y)
 
-    # # 向上滑动
-    # def swipe_up(self, t=500, n=1):
-    #     s = self.driver.get_window_size()
-    #     x1 = s['width'] * 0.5  # x坐标
-    #     y1 = s['height'] * 0.75  # 起点y坐标
-    #     y2 = s['height'] * 0.25  # 终点y坐标
-    #     for i in range(n):
-    #         self.driver.swipe(x1, y1, x1, y2, t)
+    # 向上滑动
+    def unlock_swipe_up(self, t=500, n=1):
+        s = self.driver.get_window_size()
+        x1 = s['width'] * 0.5  # x坐标
+        y1 = s['height'] * 0.75  # 起点y坐标
+        y2 = s['height'] * 0.25  # 终点y坐标
+        for i in range(n):
+            self.driver.swipe(x1, y1, x1, y2, t)
 
      # 向上滑动
     def swipe_up(self, start_width, start_height, end_width, end_height, t=1000, n=1, ):
         s = self.driver.get_window_size()
         print(s)
         x1 = start_width  # 起点x坐标
-        x2 = end_width  # 终点x坐标
         y1 = start_height  # 起点y坐标
+        x2 = end_width  # 终点x坐标
         y2 = end_height  # 终点y坐标
         for i in range(n):
             self.driver.swipe(x1, y1, x2, y2, t)
 
 
-    # # 向下滑动
-    # def swipe_down(self, t=500, n=1):
-    #     s = self.driver.get_window_size()
-    #     print(s)
-    #     x1 = s['width'] * 0.5  # x坐标
-    #     y1 = s['height'] * 0.85  # 起点y坐标
-    #     y2 = s['height'] * 0.95  # 终点y坐标
-    #     for i in range(n):
-    #         self.driver.swipe(x1, y1, x1, y2, t)
-
+    # 向下滑动
+    def swipe_down(self, t=500, n=1):
+        s = self.get_size()
+        print(s)
+        x1 = int(s[0] * 0.5)  # x坐标
+        y1 = int(s[1] * 0.5)  # 起点y坐标
+        y2 = int(s[1] * 0.8)  # 终点y坐标
+        for i in range(n):
+            self.driver.swipe(x1, y1, x1, y2, t)
 
 
     # 向左滑动
@@ -101,3 +104,6 @@ class BaseView():
         x2 = l['width'] * 0.75
         for i in range(n):
             self.driver.swipe(x1, y1, x2, y1, t)
+
+
+
