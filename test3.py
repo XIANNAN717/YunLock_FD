@@ -50,8 +50,13 @@ class UnLock():
                 confirm_text.click()
             except:
                 sleep(10)
-                self.l =self.login()
+                try:
+                    self.re_f5()
+                except:
+                    self.l =self.login()
 
+    def re_f5(self):
+        pass
 
     def lock(self):
         self.l = self.login()
