@@ -35,7 +35,7 @@ class UnLock():
             if self.swipe_num==6:
                 self.unlock_click(3)
                 print("返回到房源列表顶部")
-                for i in range(7):
+                for i in range(3):
                     self.l.swipe_down()
                 self.swipe_num = 0
             succ_num += 1
