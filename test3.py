@@ -1,6 +1,17 @@
+"""
+自动化开锁实现需求：
+1、点击开锁后，等待20S再次点击，滑动，再次点击“立即开锁”
+2、若点击“立即开锁”第一个元素失败，则点击第二个元素，注意：点击第二个元素时，不用再设置超时
+3、若报错“连接失败”，等待点击“确定”按钮
+4、若页面任何元素找不到，则点击“我的”，再点击“门锁管理”，达到刷新的目的
+5、当全部门锁依次点击开锁完毕后（滑动计数来判断是否滑到底部），重新登录（因为向下滑操作不成功），滑动计数归置为0
+
+"""
+
 from public.common.desired_caps import desired
 from public.po.login_page import LoginPage
 from selenium.webdriver.common.by import By
+from public.po.new_shop_page import NewShopPage
 from time import sleep
 
 
@@ -8,6 +19,7 @@ class UnLock():
     def __init__(self):
         self.l = None
         self.swipe_num = 0
+
     # 登录
     def login(self):
         self.swipe_num = 0
@@ -18,49 +30,59 @@ class UnLock():
         sleep(3)
         return L
 
-    def re_f5(self):
-        pass
+    # 刷新（页面任何元素找不到的情况下）
+    def refresh(self):
+        mine_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.view.View"
+        mine_element = (By.XPATH, mine_xpath)
+        mine_element_btn = self.l.wait_find_element(mine_element)
+        mine_element_btn.click()
+        lock_management_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View"
+        lock_management_element = (By.XPATH, lock_management_xpath)
+        lock_management_btn = self.l.wait_find_element(lock_management_element)
+        lock_management_btn.click()
 
+    # 等待第一个元素（立即开锁）出现
     def wait_unlock_click(self,num):
         lock_list_01_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[{num}]/android.view.View/android.widget.Button[2]".format(num=str(num))
         unlock_01_text = self.l.wait_find_element(By.XPATH, lock_list_01_xpath)
         unlock_01_text.click()
+
+    # 第二个元素（立即开锁）不用等待，直接点击
     def unlock_click(self,num):
         lock_list_01_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[{num}]/android.view.View/android.widget.Button[2]".format(num=str(num))
         unlock_01_text = self.l.find_element(By.XPATH, lock_list_01_xpath)
         unlock_01_text.click()
 
+    # 开锁
     def on_lock(self,succ_num):
         try:
             try:
                 self.wait_unlock_click(1)
-                sleep(10)
+                sleep(20)
             except:
-                sleep(10)
                 self.unlock_click(2)
-            #尝试滑动,滑动失败就再次尝试滑动，滑动成功
+                sleep(20)
             self.l.swipe_up(0.5, 0.75, 0.5, 0.52)
+            # 每滑动一次，就在原来的基础上+1
             self.swipe_num +=1
+            # 滑动到第五次时，就点击手机屏幕上第二个“立即开锁”按钮
             if self.swipe_num==5:
                 self.unlock_click(2)
             if self.swipe_num==6:
                 self.unlock_click(3)
-                print("返回到房源列表顶部")
-                # for i in range(3):
-                #     self.l.swipe_up(0.5, 0.52, 0.5, 0.75)
+                # 因为向下滑操作不成功，所以重新登录开锁
                 self.login()
-                self.swipe_num = 0
             succ_num += 1
             print("第{}次成功开锁".format(succ_num))
             return succ_num
         except:
             try:
-                confirm_text =  self.l.find_element(By.XPATH, "//*[@text='确定']")
+                confirm_text =  self.l.wait_find_element(By.XPATH, "//*[@text='确定']")
                 confirm_text.click()
             except:
                 sleep(10)
                 try:
-                    self.re_f5()
+                    self.refresh()
                 except:
                     self.l =self.login()
 
