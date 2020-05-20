@@ -72,5 +72,6 @@ if __name__ == '__main__':
     Login.login()
     import time
     time.sleep(5)
-    Login.swipe_down()
-    Login.swipe_down()
+    Login.swipe_up(0.5, 0.75, 0.5, 0.52)
+    time.sleep(5)
+    Login.swipe_up(0.5, 0.52, 0.5, 0.75)

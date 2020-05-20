@@ -27,16 +27,17 @@ class UnLock():
                 self.unlock_click(1)
             except:
                 self.unlock_click(2)
-            sleep(20)
-            self.l.swipe_up(0.5, 0.75, 0.5, 0.53)
+            sleep(10)
+            self.l.swipe_up(0.5, 0.75, 0.5, 0.52)
             self.swipe_num +=1
             if self.swipe_num==5:
                 self.unlock_click(2)
             if self.swipe_num==6:
                 self.unlock_click(3)
                 print("返回到房源列表顶部")
-                for i in range(3):
-                    self.l.swipe_down()
+                # for i in range(3):
+                #     self.l.swipe_up(0.5, 0.52, 0.5, 0.75)
+                self.login()
                 self.swipe_num = 0
             succ_num += 1
             print("第{}次成功开锁".format(succ_num))
@@ -46,6 +47,7 @@ class UnLock():
                 confirm_text =  self.l.find_element(By.XPATH, "//*[@text='确定']")
                 confirm_text.click()
             except:
+                sleep(10)
                 self.l =self.login()
 
 
