@@ -52,47 +52,47 @@ class ArtificialAuthenticationPage(BaseView):
 
     # “全部订单”按钮
     def all_order_btn(self):
-        all_order_btn = self.find_element(*self.all_order_btn_element)
+        all_order_btn = self.wait_find_element(*self.all_order_btn_element)
         all_order_btn.click()
         logger.info("AllOrderBtn is click")
 
     #  订单列表
     def order_list(self):
-        order_list = self.find_element(*self.order_list_element)
+        order_list = self.wait_find_element(*self.order_list_element)
         order_list.click()
         logger.info("OrderList is click")
 
     # 人工认证按钮
     def artificial_authentication_btn(self):
-        artificial_authentication_btn = self.find_element(*self.artificial_authentication_btn_element)
+        artificial_authentication_btn = self.wait_find_element(*self.artificial_authentication_btn_element)
         artificial_authentication_btn.click()
         logger.info("artificial_authentication_btn is click")
 
     # 选择名族
     def choose_ethnic_btn(self):
-        choose_ethnic = self.find_element(*self.choose_ethnic_element)
+        choose_ethnic = self.wait_find_element(*self.choose_ethnic_element)
         choose_ethnic.click()
-        ethnic_name = self.find_element(*self.ethnic_name_element)
+        ethnic_name = self.wait_find_element(*self.ethnic_name_element)
         ethnic_name.click()
         logger.info("Ethnic is click")
 
     # 证件号输入框
     def id_number_input_box(self,id_number_value):
-        id_number = self.find_element(*self.id_number_element)
+        id_number = self.wait_find_element(*self.id_number_element)
         id_number.click()
         AdbShell.input_text(id_number_value)
         logger.info("IdNumber is SetValue")
 
     # 住址输入框
     def address_input_box(self,address_value):
-        address = self.find_element(*self.address_element)
+        address = self.wait_find_element(*self.address_element)
         address.click()
         AdbShell.input_text(address_value)
         logger.info("Address is SetValue")
 
     # 提交人工认证“确定”按钮
     def confirm_btn(self):
-        confirm_btn = self.find_element(*self.confirm_btn_element)
+        confirm_btn = self.wait_find_element(*self.confirm_btn_element)
         confirm_btn.click()
         logger.info("Confirm is click")
 

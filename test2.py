@@ -29,7 +29,7 @@ def lock():
         try:
             lock_list_01_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.widget.Button[2]"
             # # lock_list_02_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.Button[2]"
-            unlock_01_text = l.find_element(By.XPATH, lock_list_01_xpath)
+            unlock_01_text = l.wait_find_element(By.XPATH, lock_list_01_xpath)
             # # unlock_02_text = l.find_element(By.XPATH, lock_list_02_xpath)
             unlock_01_text.click()
             sleep(20)

@@ -21,7 +21,7 @@ class LoginPage(BaseView):
 
     # 手机号文本区域
     def mobile_set_text(self, mobileValue):
-        mobile_text = self.find_element(*self.mobile_text_element)
+        mobile_text = self.wait_find_element(*self.mobile_text_element)
         # print("MobileText", MobileText.text)
         mobile_text.click()
         try:
@@ -33,7 +33,7 @@ class LoginPage(BaseView):
 
     # 验证码文本区域
     def code_set_text(self, CodeValue):
-        code_text = self.find_element(*self.code_text_element)
+        code_text = self.wait_find_element(*self.code_text_element)
         # print("MobileText", CodeText.text)
         code_text.click()
         try:
@@ -45,7 +45,7 @@ class LoginPage(BaseView):
 
     # 登录按钮
     def login_button(self):
-        LoginBtn = self.find_element(*self.login_btn_element)
+        LoginBtn = self.wait_find_element(*self.login_btn_element)
         LoginBtn.click()
         logger.info("LoginBtn is click")
 

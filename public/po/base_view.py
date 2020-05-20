@@ -29,14 +29,14 @@ class BaseView():
 
 
     # 查找元素二次封装
-    def find_element(self,*loc):
+    def wait_find_element(self, *loc):
         """
          将webdriver中find_element进行二次封装，增加等待时间，超时抛异常
         :param loc: *loc 代表任意数量的位置参数（带单个星号的参数）
         :return:
         """
         try:
-            return WebDriverWait(self.driver,60).until(EC.visibility_of_element_located(loc))
+            return WebDriverWait(self.driver,40).until(EC.visibility_of_element_located(loc))
         except:
             try:
                 return self.driver.find_element(*loc)
@@ -46,7 +46,20 @@ class BaseView():
                 self.get_screeShot()
                 raise (TimeoutError)
 
-
+    # 查找元素二次封装
+    def find_element(self, *loc):
+        """
+         将webdriver中find_element进行二次封装，增加等待时间，超时抛异常
+        :param loc: *loc 代表任意数量的位置参数（带单个星号的参数）
+        :return:
+        """
+        try:
+            return self.driver.find_element(*loc)
+        except:
+            print("元素未找到")
+            print("{}该activity中未找到{}元素".format(self, loc))
+            self.get_screeShot()
+            raise (TimeoutError)
 
     # 获得机器屏幕大小x,y
     def get_size(self):

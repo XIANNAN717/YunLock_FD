@@ -32,21 +32,21 @@ class NewShopPage(BaseView):
 
     # “我的”按钮
     def mine(self):
-        mine_element_btn = self.find_element(*self.mine_element)
+        mine_element_btn = self.wait_find_element(*self.mine_element)
         mine_element_btn.click()
         logger.info("MineElementBtn is click!")
 
 
     # “门店管理”按钮
     def shop_management(self):
-        shop_management_btn = self.find_element(*self.shop_management_element)  # 户型描述输入
+        shop_management_btn = self.wait_find_element(*self.shop_management_element)  # 户型描述输入
         shop_management_btn.click()
         logger.info("ShopManagementValue is click!")
 
 
     # “新建门店”按钮
     def new_shop_btn(self):
-        new_shop_btn = self.find_element(*self.new_shop_btn_element)
+        new_shop_btn = self.wait_find_element(*self.new_shop_btn_element)
         sleep(1)
         new_shop_btn.click()
         logger.info("NewShopBtn is click!")
@@ -54,7 +54,7 @@ class NewShopPage(BaseView):
 
     # “新建门店名称”文本输入框
     def shop_name(self, shop_name_Value):
-        shop_name_text = self.find_element(*self.shop_name_element)
+        shop_name_text = self.wait_find_element(*self.shop_name_element)
         shop_name_text.click()
         AdbShell.input_text(shop_name_Value)
         logger.info("RoomDescriptionText is setValues!")
@@ -63,7 +63,7 @@ class NewShopPage(BaseView):
 
    # 确定按钮
     def confirm_button(self):
-        ConfirmBtn = self.find_element(*self.confirm_element)
+        ConfirmBtn = self.wait_find_element(*self.confirm_element)
         ConfirmBtn.click()
         logger.info("ConfirmBtn is click")
 

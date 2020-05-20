@@ -58,40 +58,40 @@ class TemporaryAuthorization(BaseView):
 
     # “临时授权”按钮
     def temporary_authorization_btn(self):
-        temporary_authorization_btn = self.find_element(*self.temporary_authorization_btn_element)
+        temporary_authorization_btn = self.wait_find_element(*self.temporary_authorization_btn_element)
         temporary_authorization_btn.click()
         logger.info("temporary_authorization_btn is click")
 
     # “添加临时授权”按钮
     def add_authorization_btn(self):
-        add_authorization_btn = self.find_element(*self.add_authorization_btn_element)
+        add_authorization_btn = self.wait_find_element(*self.add_authorization_btn_element)
         add_authorization_btn.click()
         logger.info("add_authorization_btn is click")
 
     # 入住开始时间
     def checkin_time(self):
-        checkin_time = self.find_element(*self.checkin_time_element)
+        checkin_time = self.wait_find_element(*self.checkin_time_element)
         checkin_time.click()
-        self.find_element(*self.time_confirm_element).click()
+        self.wait_find_element(*self.time_confirm_element).click()
         logger.info("checkin_time is click")
 
     # 入住结束时间
     def checkout_time(self):
-        checkout_time = self.find_element(*self.checkout_time_element)
+        checkout_time = self.wait_find_element(*self.checkout_time_element)
         checkout_time.click()
-        self.find_element(*self.time_confirm_element).click()
+        self.wait_find_element(*self.time_confirm_element).click()
         logger.info("checkin_time is click")
 
     # 被授权人姓名输入框
     def authorized_name_input_box(self,authorized_name_value):
-        authorized_name_text = self.find_element(*self.authorized_name_element)
+        authorized_name_text = self.wait_find_element(*self.authorized_name_element)
         authorized_name_text.click()
         AdbShell.input_text(authorized_name_value)
         logger.info("authorized_name_text is SetValue")
 
     # 被授权人手机号输入框
     def authorized_mobile_input_box(self, authorized_mobile_value):
-        authorized_mobile_text = self.find_element(*self.authorized_mobile_element)
+        authorized_mobile_text = self.wait_find_element(*self.authorized_mobile_element)
         authorized_mobile_text.click()
         AdbShell.input_text(authorized_mobile_value)
         logger.info("authorized_mobile is SetValue")
@@ -99,16 +99,16 @@ class TemporaryAuthorization(BaseView):
     # 选择被授权人身份
     def authorized_identity_btn(self):
         # 被授权人身份按钮
-        authorized_identity_btn = self.find_element(*self.authorized_identity_btn_element)
+        authorized_identity_btn = self.wait_find_element(*self.authorized_identity_btn_element)
         authorized_identity_btn.click()
         # 被授权人身份（列表第二个元素，保洁）
-        authorized_identity = self.find_element(*self.authorized_identity_element)
+        authorized_identity = self.wait_find_element(*self.authorized_identity_element)
         authorized_identity.click()
         logger.info("authorized_identity is click")
 
     # 提交临时授权“确定”按钮
     def confirm_btn(self):
-        confirm_btn = self.find_element(*self.confirm_btn_element)
+        confirm_btn = self.wait_find_element(*self.confirm_btn_element)
         confirm_btn.click()
         logger.info("Confirm is click")
 

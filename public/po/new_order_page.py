@@ -72,54 +72,54 @@ class NewOderPage(BaseView):
 
     # “订单管理”按钮
     def oder_management(self):
-        oder_management_btn = self.find_element(*self.oder_management_btn_element)
+        oder_management_btn = self.wait_find_element(*self.oder_management_btn_element)
         oder_management_btn.click()
         logger.info("OderManagementBtn is click")
 
     # “选择门店”按钮
     def choose_shop(self):
-        shop_btn = self.find_element(*self.shop_btn_element)
+        shop_btn = self.wait_find_element(*self.shop_btn_element)
         shop_btn.click()
         # print('开始滑动')
         # sleep(5)
         # self.swipe_up(450, 1500, 450, 1200)
-        shop_name = self.find_element(*self.test_shop_element)
+        shop_name = self.wait_find_element(*self.test_shop_element)
         shop_name.click()
         logger.info("ChooseShopBtn is click")
 
     # “新建订单”按钮
     def new_oder_btn(self):
-        new_oder_btn = self.find_element(*self.new_oder_btn_element)
+        new_oder_btn = self.wait_find_element(*self.new_oder_btn_element)
         new_oder_btn.click()
         logger.info("NewOderBtn is click")
 
     # 选择房间
     def choose_room(self):
-        choose_room = self.find_element(*self.choose_room_element)
+        choose_room = self.wait_find_element(*self.choose_room_element)
         # print(choose_room)
         choose_room.click()
-        room_name = self.find_element(*self.test_room_element)
+        room_name = self.wait_find_element(*self.test_room_element)
         # print(room_name)
         room_name.click()
         logger.info("ChooseRoom is click")
 
     # 入住开始时间
     def checkin_time(self):
-        checkin_time = self.find_element(*self.checkin_time_element)
+        checkin_time = self.wait_find_element(*self.checkin_time_element)
         checkin_time.click()
-        self.find_element(*self.time_confirm_element).click()
+        self.wait_find_element(*self.time_confirm_element).click()
         logger.info("checkin_time is click")
 
     # 入住结束时间
     def checkout_time(self):
-        checkout_time = self.find_element(*self.checkout_time_element)
+        checkout_time = self.wait_find_element(*self.checkout_time_element)
         checkout_time.click()
-        self.find_element(*self.time_confirm_element).click()
+        self.wait_find_element(*self.time_confirm_element).click()
         logger.info("checkin_time is click")
 
     # “入住人姓名”文本区域
     def tenant_name(self, tenant_name_value):
-        tenant_name_text = self.find_element(*self.tenant_name_element)  # 户型描述输入
+        tenant_name_text = self.wait_find_element(*self.tenant_name_element)  # 户型描述输入
         tenant_name_text.click()
         AdbShell.input_text(tenant_name_value)
         # print("入住人姓名：",tenant_name_value)
@@ -129,7 +129,7 @@ class NewOderPage(BaseView):
 
     # “入住人手机号”文本区域
     def tenant_mobile(self, tenant_mobile_value):
-        tenant_mobile_text = self.find_element(*self.tenant_mobile_element)  # 户型描述输入
+        tenant_mobile_text = self.wait_find_element(*self.tenant_mobile_element)  # 户型描述输入
         tenant_mobile_text.click()
         AdbShell.input_text(tenant_mobile_value)
         logger.info("TenantMobileText is setValues!")
@@ -137,7 +137,7 @@ class NewOderPage(BaseView):
 
     # 提交订单时的“确定”按钮
     def confirm_button(self):
-        ConfirmBtn = self.find_element(*self.confirm_element)
+        ConfirmBtn = self.wait_find_element(*self.confirm_element)
         ConfirmBtn.click()
         logger.info("ConfirmBtn is click")
 

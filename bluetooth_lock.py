@@ -8,7 +8,7 @@ Login = LoginPage(driver)
 Login.login()
 
 
-unlock_text = driver.find_element(By.XPATH, "//*[@text='立即开锁']")
+unlock_text = driver.wait_find_element(By.XPATH, "//*[@text='立即开锁']")
 
 unlock_count_num = 3
 succ_num = 0
@@ -19,7 +19,7 @@ for t in range(unlock_count_num):
         succ_num += 1
         print(succ_num)
     except:
-        confirm_btn_text = driver.find_element(By.XPATH, "//*[@text='确定']")
+        confirm_btn_text = driver.wait_find_element(By.XPATH, "//*[@text='确定']")
         confirm_btn_text.click()
         unlock_text.click()
         sleep(15)

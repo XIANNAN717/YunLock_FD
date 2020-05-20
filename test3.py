@@ -10,6 +10,7 @@ class UnLock():
         self.swipe_num = 0
     # 登录
     def login(self):
+        self.swipe_num = 0
         driver = desired()
         L = LoginPage(driver)
         L.login()
@@ -17,6 +18,13 @@ class UnLock():
         sleep(3)
         return L
 
+    def re_f5(self):
+        pass
+
+    def wait_unlock_click(self,num):
+        lock_list_01_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[{num}]/android.view.View/android.widget.Button[2]".format(num=str(num))
+        unlock_01_text = self.l.wait_find_element(By.XPATH, lock_list_01_xpath)
+        unlock_01_text.click()
     def unlock_click(self,num):
         lock_list_01_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[{num}]/android.view.View/android.widget.Button[2]".format(num=str(num))
         unlock_01_text = self.l.find_element(By.XPATH, lock_list_01_xpath)
@@ -25,11 +33,12 @@ class UnLock():
     def on_lock(self,succ_num):
         try:
             try:
-                self.unlock_click(1)
+                self.wait_unlock_click(1)
                 sleep(10)
             except:
-                self.unlock_click(2)
                 sleep(10)
+                self.unlock_click(2)
+            #尝试滑动,滑动失败就再次尝试滑动，滑动成功
             self.l.swipe_up(0.5, 0.75, 0.5, 0.52)
             self.swipe_num +=1
             if self.swipe_num==5:
@@ -55,8 +64,6 @@ class UnLock():
                 except:
                     self.l =self.login()
 
-    def re_f5(self):
-        pass
 
     def lock(self):
         self.l = self.login()

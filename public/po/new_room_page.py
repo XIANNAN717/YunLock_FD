@@ -32,7 +32,7 @@ class NewRoomPage(BaseView):
 
     # 新添房源按钮
     def new_room_btn(self):
-        new_room_Btn = self.find_element(*self.room_text_element)
+        new_room_Btn = self.wait_find_element(*self.room_text_element)
         try:
             new_room_Btn.click()
             logger.info("new_oder_Btn is click")
@@ -49,7 +49,7 @@ class NewRoomPage(BaseView):
 
     # 户型描述文本区域
     def room_type(self, room_type_Value):
-        room_type_text = self.find_element(*self.room_type_description_element)  # 户型描述输入
+        room_type_text = self.wait_find_element(*self.room_type_description_element)  # 户型描述输入
         room_type_text.click()
         AdbShell.input_text(room_type_Value)
         # room_type_text.send_keys(room_type_Value)
@@ -59,7 +59,7 @@ class NewRoomPage(BaseView):
 
     # 房源昵称文本区域
     def room_name(self, room_name_Value):
-        room_name_text = self.find_element(*self.room_name_element)
+        room_name_text = self.wait_find_element(*self.room_name_element)
         # print("room_name_text", room_name_text.text)
         room_name_text.click()
         try:
@@ -72,7 +72,7 @@ class NewRoomPage(BaseView):
 
     # 房源介绍文本区域
     def room_description(self, room_description_Value):
-        room_description_text = self.find_element(*self.room_description_element)
+        room_description_text = self.wait_find_element(*self.room_description_element)
         # print("room_description_text", room_description.text)
         room_description_text.click()
         try:
@@ -85,7 +85,7 @@ class NewRoomPage(BaseView):
 
    # 确定按钮
     def confirm_button(self):
-        ConfirmBtn = self.find_element(*self.confirm_element)
+        ConfirmBtn = self.wait_find_element(*self.confirm_element)
         ConfirmBtn.click()
         logger.info("ConfirmBtn is click")
 

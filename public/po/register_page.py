@@ -22,7 +22,7 @@ class RegisterPage(BaseView):
 
     # 姓名文本区域
     def name_text(self, name_value):
-        name_text = self.find_element(*self.name_text_element)
+        name_text = self.wait_find_element(*self.name_text_element)
         # print("MobileText", MobileText.text)
         name_text.click()
         try:
@@ -35,7 +35,7 @@ class RegisterPage(BaseView):
 
     # 身份证号文本区域
     def id_card_text(self, id_card_value):
-        id_card_text = self.find_element(*self.id_card_text_element)
+        id_card_text = self.wait_find_element(*self.id_card_text_element)
         # print("MobileText", CodeText.text)
         id_card_text.click()
         try:
@@ -47,7 +47,7 @@ class RegisterPage(BaseView):
 
     # 下一步按钮
     def next_btn(self):
-        next_btn = self.find_element(*self.next_btn_element)
+        next_btn = self.wait_find_element(*self.next_btn_element)
         next_btn.click()
         logger.info("next_btn is click")
 
