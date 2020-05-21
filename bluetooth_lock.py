@@ -26,16 +26,16 @@ class UnLock():
         base = BaseView(driver)
         return base
 
-    # 刷新（页面任何元素找不到的情况下）
-    def refresh(self):
-        mine_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.view.View"
-        mine_element = (By.XPATH, mine_xpath)
-        mine_element_btn = self.l.wait_find_element(mine_element)
-        mine_element_btn.click()
-        lock_management_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View"
-        lock_management_element = (By.XPATH, lock_management_xpath)
-        lock_management_btn = self.l.wait_find_element(lock_management_element)
-        lock_management_btn.click()
+    # # 刷新（页面任何元素找不到的情况下）
+    # def refresh(self):
+    #     mine_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.view.View"
+    #     mine_element = (By.XPATH, mine_xpath)
+    #     mine_element_btn = self.l.wait_find_element(mine_element)
+    #     mine_element_btn.click()
+    #     lock_management_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View"
+    #     lock_management_element = (By.XPATH, lock_management_xpath)
+    #     lock_management_btn = self.l.wait_find_element(lock_management_element)
+    #     lock_management_btn.click()
 
     # 等待第一个元素（立即开锁）出现
     def wait_unlock_click(self,num):

@@ -55,7 +55,6 @@ class BaseView():
         try:
             return self.driver.find_element(*loc)
         except:
-            print("元素未找到")
             print("{}该activity中未找到{}元素".format(self, loc))
             self.get_screeShot()
             raise (TimeoutError)
