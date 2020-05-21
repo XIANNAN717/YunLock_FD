@@ -7,7 +7,8 @@ ServerUrl = 'http://127.0.0.1:4723/wd/hub'
 
 def desired():
     desired_caps = {
-        'noRest': True,  # 驱动APP，不要清除app里的原有的数据
+        'noReset': True,  # 驱动APP，不要清除app里的原有的数据
+        'fullReset' : False,
         'platformName': 'Android',
         'platformVersion': '7.1',
         'unicodeKeyboard': True,  # 使用Unicode输入法

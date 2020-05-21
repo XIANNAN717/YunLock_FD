@@ -1,9 +1,9 @@
 """
-自动化开锁实现需求：
-1、点击开锁后，等待20S再次点击，滑动，再次点击“立即开锁”
+自动化开锁实现需求（5把门锁）：
+1、点击开锁后，等待20S，滑动，再次点击“立即开锁”
 2、若点击“立即开锁”第一个元素失败，则点击第二个元素，注意：点击第二个元素时，不用再设置超时
 3、若报错“连接失败”，等待点击“确定”按钮
-4、若页面任何元素找不到，则点击“我的”，再点击“门锁管理”，达到刷新的目的
+# 4、若页面任何元素找不到，则点击“我的”，再点击“门锁管理”，达到刷新的目的（没有刷新成功）
 5、当全部门锁依次点击开锁完毕后（滑动计数来判断是否滑到底部），重新登录（因为向下滑操作不成功），滑动计数归置为0
 
 """
@@ -25,7 +25,7 @@ class UnLock():
         self.swipe_num = 0
         driver = desired()
         L = LoginPage(driver)
-        L.login()
+        # L.login()
         # login.swipe_up()
         sleep(3)
         return L
@@ -63,6 +63,7 @@ class UnLock():
                 self.unlock_click(2)
                 sleep(20)
             self.l.swipe_up(0.5, 0.75, 0.5, 0.52)
+            sleep(5)
             # 每滑动一次，就在原来的基础上+1
             self.swipe_num +=1
             # 滑动到第五次时，就点击手机屏幕上第二个“立即开锁”按钮
@@ -80,11 +81,8 @@ class UnLock():
                 confirm_text =  self.l.wait_find_element(By.XPATH, "//*[@text='确定']")
                 confirm_text.click()
             except:
-                sleep(10)
-                try:
-                    self.refresh()
-                except:
-                    self.l =self.login()
+                self.l = self.login()
+
 
 
     def lock(self):
