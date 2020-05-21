@@ -11,7 +11,7 @@ def desired():
         'fullReset' : False,
         'platformName': 'Android',
         'platformVersion': '7.1',
-        'unicodeKeyboard': True,  # 使用Unicode输入法
+        # 'unicodeKeyboard': True,  # 使用Unicode输入法
         'resetKeyboard': True,  # 重置输入法到初始状态
         'deviceName': '843bd2f',
         # 'deviceName':'127.0.0.1:62001',

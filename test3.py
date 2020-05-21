@@ -20,8 +20,8 @@ class UnLock():
         self.l = None
         self.swipe_num = 0
 
-    # 登录
-    def login(self):
+    # 打开APP
+    def open_app(self):
         self.swipe_num = 0
         driver = desired()
         L = LoginPage(driver)
@@ -53,7 +53,7 @@ class UnLock():
         unlock_01_text = self.l.find_element(By.XPATH, lock_list_01_xpath)
         unlock_01_text.click()
 
-    # 开锁
+    # 开锁方法
     def on_lock(self,succ_num):
         try:
             try:
@@ -62,31 +62,35 @@ class UnLock():
             except:
                 self.unlock_click(2)
                 sleep(20)
+            succ_num += 1
+            print("第{}次点击开锁".format(succ_num))
             self.l.swipe_up(0.5, 0.75, 0.5, 0.52)
             sleep(5)
             # 每滑动一次，就在原来的基础上+1
             self.swipe_num +=1
+            print(("第{}次滑动").format(self.swipe_num))
             # 滑动到第五次时，就点击手机屏幕上第二个“立即开锁”按钮
-            if self.swipe_num==5:
+            if self.swipe_num==4:
                 self.unlock_click(2)
-            if self.swipe_num==6:
+                sleep(20)
                 self.unlock_click(3)
-                # 因为向下滑操作不成功，所以重新登录开锁
-                self.login()
-            succ_num += 1
-            print("第{}次成功开锁".format(succ_num))
+                sleep(20)
+                # 因为向下滑操作不成功，所以重新打开app
+                self.l = self.open_app()
             return succ_num
         except:
             try:
                 confirm_text =  self.l.wait_find_element(By.XPATH, "//*[@text='确定']")
                 confirm_text.click()
             except:
-                self.l = self.login()
+                # self.on_lock(succ_num)
+                self.l = self.open_app()
 
 
 
+    # 循环开锁
     def lock(self):
-        self.l = self.login()
+        self.l = self.open_app()
         count_num = 10000  #  设定的开锁总数统计
         actual_count_num = 0  # 实际开锁总数统计
         succ_num = 0  # 开锁成功次数
