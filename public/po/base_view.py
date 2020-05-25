@@ -2,7 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from config import global_config
-
+from public.common.desired_caps import desired
 
 img_path = global_config.Images_path
 
@@ -36,7 +36,7 @@ class BaseView():
         :return:
         """
         try:
-            return WebDriverWait(self.driver,40).until(EC.visibility_of_element_located(loc))
+            return WebDriverWait(self.driver,10).until(EC.visibility_of_element_located(loc))
         except:
             try:
                 return self.driver.find_element(*loc)
@@ -87,12 +87,12 @@ class BaseView():
 
 
     # 向下滑动
-    def swipe_down(self, t=500, n=1):
+    def swipe_down(self, t=300, n=2):
         s = self.get_size()
         print(s)
         x1 = int(s[0] * 0.5)  # x坐标
-        y1 = int(s[1] * 0.5)  # 起点y坐标
-        y2 = int(s[1] * 0.8)  # 终点y坐标
+        y1 = int(s[1] * 0.25)  # 起点y坐标
+        y2 = int(s[1] * 0.85)  # 终点y坐标
         for i in range(n):
             self.driver.swipe(x1, y1, x1, y2, t)
 
@@ -117,4 +117,9 @@ class BaseView():
             self.driver.swipe(x1, y1, x2, y1, t)
 
 
+if __name__ == '__main__':
+    driver = desired()
+    b = BaseView(driver)
+    b.unlock_swipe_up()
+    b.swipe_down()
 
