@@ -60,7 +60,7 @@ class UnLock():
                 sleep(20)
             succ_num += 1
             print("点击第{}把门锁".format(succ_num))
-            self.l.swipe_up(0.5, 0.75, 0.5, 0.52)
+            self.l.swipe_up(0.5, 0.75, 0.5, 0.42)
             # 每滑动一次，就在原来的基础上+1
             self.swipe_num +=1
             print(("第{}次滑动").format(self.swipe_num))

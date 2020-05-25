@@ -10,10 +10,10 @@ def desired():
         'noReset': True,  # 驱动APP，不要清除app里的原有的数据
         'fullReset' : False,
         'platformName': 'Android',
-        'platformVersion': '7.1',
+        'platformVersion': '8.0',
         # 'unicodeKeyboard': True,  # 使用Unicode输入法
         'resetKeyboard': True,  # 重置输入法到初始状态
-        'deviceName': '843bd2f',
+        'deviceName': 'WTKDU16C07002694',
         # 'deviceName':'127.0.0.1:62001',
         'appPackage': 'com.upqing.sunflower',
         'appActivity': '.MainActivity'
