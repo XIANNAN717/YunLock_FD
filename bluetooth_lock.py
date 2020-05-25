@@ -59,9 +59,8 @@ class UnLock():
                 self.unlock_click(2)
                 sleep(20)
             succ_num += 1
-            print("第{}次点击开锁".format(succ_num))
+            print("点击第{}把门锁".format(succ_num))
             self.l.swipe_up(0.5, 0.75, 0.5, 0.52)
-            sleep(5)
             # 每滑动一次，就在原来的基础上+1
             self.swipe_num +=1
             print(("第{}次滑动").format(self.swipe_num))
@@ -69,10 +68,9 @@ class UnLock():
             if self.swipe_num==4:
                 self.unlock_click(2)
                 sleep(20)
-                self.unlock_click(3)
-                sleep(20)
                 # 因为向下滑操作不成功，所以重新打开app
                 self.l = self.open_app()
+                succ_num = 0
             return succ_num
         except:
             try:
@@ -83,15 +81,12 @@ class UnLock():
                 self.l = self.open_app()
 
 
-
     # 循环开锁
     def lock(self):
         self.l = self.open_app()
-        count_num = 10000  #  设定的开锁总数统计
-        actual_count_num = 0  # 实际开锁总数统计
+        count_num = 500  #  设定的开锁总数统计
         succ_num = 0  # 开锁成功次数
         for t in range(count_num):
-            actual_count_num += 1
             succ_num = self.on_lock(succ_num)
 
 
