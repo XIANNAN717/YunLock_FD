@@ -36,7 +36,7 @@ class BaseView():
         :return:
         """
         try:
-            return WebDriverWait(self.driver,10).until(EC.visibility_of_element_located(loc))
+            return WebDriverWait(self.driver,60).until(EC.visibility_of_element_located(loc))
         except:
             try:
                 return self.driver.find_element(*loc)

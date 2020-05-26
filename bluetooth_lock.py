@@ -71,6 +71,7 @@ class UnLock():
                     # 所以重新打开app
                     #self.l = self.open_app()
                     self.swipe_num = 0
+                    
                 return succ_num
         except Exception as e:
             print("异常信息",e)
