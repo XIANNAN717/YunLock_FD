@@ -97,6 +97,7 @@ class BaseView():
             self.driver.swipe(x1, y1, x1, y2, t)
 
 
+
     # 向左滑动
     def swipe_left(self, t=500, n=1):
         s = self.driver.get_window_size()
@@ -115,6 +116,8 @@ class BaseView():
         x2 = l['width'] * 0.75
         for i in range(n):
             self.driver.swipe(x1, y1, x2, y1, t)
+
+
 
 
 if __name__ == '__main__':

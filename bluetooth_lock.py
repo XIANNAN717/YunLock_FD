@@ -11,7 +11,7 @@
 from public.common.desired_caps import desired
 from public.po.base_view import BaseView
 from selenium.webdriver.common.by import By
-from public.po.new_shop_page import NewShopPage
+from public.po.login_page import LoginPage
 from log.log import logger
 import logging
 from time import sleep
@@ -26,7 +26,11 @@ class UnLock():
         self.swipe_num = 0
         driver = desired()
         base = BaseView(driver)
-        return base
+        open_YunLock = LoginPage(driver)
+        sleep(5)
+        base.swipe_down()
+        applet = open_YunLock.YunLock_click()
+        return applet
 
     # 等待第一个元素（立即开锁）出现
     def wait_unlock_click(self,num):
