@@ -53,13 +53,13 @@ class UnLock():
             try:
                 confirm_text =  self.l.find_element(By.XPATH, "//*[@text='确定']")
                 confirm_text.click()
-                logger.info("第{}把门锁开锁失败".format(succ_num))
+                logger.info("第{}把门锁开锁失败".format(self.swipe_num))
                 # print("第{}把门锁开锁失败".format(succ_num))
                 return succ_num
             #开锁成功按照正常流程进行
             except:
                 succ_num += 1
-                logger.info("第{}把门锁开锁成功".format(succ_num))
+                logger.info("第{}把门锁开锁成功".format(self.swipe_num))
                 # print("第{}把门锁开锁成功".format(succ_num))
                 self.l.swipe_up(0.5, 0.75, 0.5, 0.42)
                 # 每滑动一次，就在原来的基础上+1
