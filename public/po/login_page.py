@@ -1,35 +1,72 @@
 from selenium.webdriver.common.by import By
-from public.common.desired_caps import desired
 from public.po.base_view import BaseView
-from log.log import logger
 import logging
-from time import sleep
-
+from log.log import logger
+from public.common.desired_caps import desired
+from public.common.do_excel import ReadExcel
+from public.common.adb_shell import AdbShell
 
 # 日志类的实例化
 logger = logger(__name__, Cmdlevel=logging.INFO, Filelevel=logging.INFO)
 
 
 class LoginPage(BaseView):
-    YunLock_xpath = "//android.widget.FrameLayout[@content-desc='当前所在页面,与的聊天']/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/com.tencent.mm.ui.mogic.WxViewPager/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ListView/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.support.v7.widget.RecyclerView/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[1]/android.widget.FrameLayout/android.widget.ImageView[2]"
-
-    YunLock_text_element = (By.XPATH, YunLock_xpath)
+    mobile_text_element = (By.CLASS_NAME, "android.widget.EditText")
+    code_text_element = (By.XPATH, "//*[contains(text(), 输入验证码)]")
+    login_btn_element = (By.XPATH, "//*[@text='登录']")
+    server_url = "http://127.0.0.1:4723/wd/hub"
 
     def __init__(self, driver):
         super().__init__(driver)
 
-    def YunLock_click(self):
-        YunLock_text = self.wait_find_element(*self.YunLock_text_element)
-        YunLock_text.click()
+    # 手机号文本区域
+    def mobile_set_text(self, mobileValue):
+        mobile_text = self.find_element(*self.mobile_text_element)
+        # print("MobileText", MobileText.text)
+        mobile_text.click()
+        try:
+            AdbShell.input_text(mobileValue)
+            # MobileText.send_keys(mobileValue)
+            logger.info("MobileText is setValues!")
+        except:
+            logger.info("手机号输入失败!")
 
+    # 验证码文本区域
+    def code_set_text(self, CodeValue):
+        code_text = self.find_element(*self.code_text_element)
+        # print("MobileText", CodeText.text)
+        code_text.click()
+        try:
+            AdbShell.input_text(CodeValue)
+            # MobileText.send_keys(mobileValue)
+            logger.info("CodeText is setValues!")
+        except:
+            logger.info("验证码输入失败!")
 
+    # 登录按钮
+    def login_button(self):
+        LoginBtn = self.find_element(*self.login_btn_element)
+        LoginBtn.click()
+        logger.info("LoginBtn is click")
+
+    # 登录
+    def login(self):
+        try:
+            self.wait_activity(".MainActivity", 30)
+            mobileValue = int(ReadExcel("Login.xlsx", "Sheet1").read_excel(1, 0))
+            codeValue = int(ReadExcel("Login.xlsx", "Sheet1").read_excel(2, 0))
+            # print(mobileValue)
+            # print(codeValue)
+            self.mobile_set_text(mobileValue)
+            self.code_set_text(codeValue)
+            self.login_button()
+        except:
+            print("登录失败")
+            self.get_screeShot()
 
 
 # 调试
 if __name__ == '__main__':
-    des = desired()
-    b = BaseView(des)
-    sleep(5)
-    b.swipe_down()
-    open_YunLock = LoginPage(des)
-    open_YunLock.YunLock_click()
+    driver = desired()
+    Login = LoginPage(driver)
+    Login.login()
