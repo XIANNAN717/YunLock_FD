@@ -12,9 +12,11 @@ from public.common.desired_caps import desired
 from public.po.base_view import BaseView
 from selenium.webdriver.common.by import By
 from public.po.new_shop_page import NewShopPage
+from log.log import logger
+import logging
 from time import sleep
 
-
+logger = logger(__name__, Cmdlevel=logging.INFO, Filelevel=logging.INFO)
 class UnLock():
     def __init__(self):
         self.swipe_num = 0
@@ -51,11 +53,14 @@ class UnLock():
             try:
                 confirm_text =  self.l.find_element(By.XPATH, "//*[@text='确定']")
                 confirm_text.click()
+                logger.info("第{}把门锁开锁失败".format(succ_num))
+                # print("第{}把门锁开锁失败".format(succ_num))
                 return succ_num
             #开锁成功按照正常流程进行
             except:
                 succ_num += 1
-                print("点击第{}把门锁".format(succ_num))
+                logger.info("第{}把门锁开锁成功".format(succ_num))
+                # print("第{}把门锁开锁成功".format(succ_num))
                 self.l.swipe_up(0.5, 0.75, 0.5, 0.42)
                 # 每滑动一次，就在原来的基础上+1
                 self.swipe_num +=1
@@ -71,7 +76,7 @@ class UnLock():
                     # 所以重新打开app
                     #self.l = self.open_app()
                     self.swipe_num = 0
-                    
+
                 return succ_num
         except Exception as e:
             print("异常信息",e)
