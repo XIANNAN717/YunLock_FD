@@ -55,7 +55,7 @@ class BaseView():
         try:
             return self.driver.find_element(*loc)
         except:
-            print("{}该activity中未找到{}元素".format(self, loc))
+            # print("{}该activity中未找到{}元素".format(self, loc))
             self.get_screeShot()
             raise (TimeoutError)
 
@@ -89,7 +89,7 @@ class BaseView():
     # 向下滑动
     def swipe_down(self, t=300, n=2):
         s = self.get_size()
-        print(s)
+        # print(s)
         x1 = int(s[0] * 0.5)  # x坐标
         y1 = int(s[1] * 0.25)  # 起点y坐标
         y2 = int(s[1] * 0.85)  # 终点y坐标
