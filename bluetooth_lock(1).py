@@ -40,7 +40,7 @@ class UnLock():
         unlock_01_text.click()
 
     # 开锁方法
-    def on_lock(self,succ_num):
+    def on_lock(self,t):
         try:
             try:
                 self.wait_unlock_click(1)
@@ -52,13 +52,18 @@ class UnLock():
             try:
                 confirm_text =  self.l.find_element(By.XPATH, "//*[@text='确定']")
                 confirm_text.click()
-                logger.info("第{}把门锁开锁失败".format(succ_num))
+                if t%4 != 0:
+                    logger.info("第{}把门锁开锁失败".format(t % 4))
+                else:
+                    logger.info("第4把门锁开锁失败")
                 # print("第{}把门锁开锁失败".format(succ_num))
-                return succ_num
+                return t
             #开锁成功按照正常流程进行
             except:
-                succ_num += 1
-                logger.info("第{}把门锁开锁成功".format(succ_num))
+                if t%4 != 0:
+                    logger.info("第{}把门锁开锁成功".format(t%4))
+                else:
+                    logger.info("第4把门锁开锁成功")
                 # print("第{}把门锁开锁成功".format(succ_num))
                 self.l.swipe_up(0.5, 0.75, 0.5, 0.42)
                 # 每滑动一次，就在原来的基础上+1
@@ -68,34 +73,28 @@ class UnLock():
                 if self.swipe_num==4:
                     self.unlock_click(1)
                     sleep(30)
-                    # self.unlock_click(3)
-                    # sleep(20)
-                    # 因为向下滑操作不成功
+                    # 向下滑,门锁列表回到最顶部
+                    print("开始向下滑")
                     self.l.swipe_down()
-                    # 所以重新打开app
-                    #self.l = self.open_app()
                     self.swipe_num = 0
+                return t
 
-                return succ_num
         except Exception as e:
             print("异常信息",e)
             try:
                 confirm_text =  self.l.wait_find_element(By.XPATH, "//*[@text='确定']")
                 confirm_text.click()
             except:
-                # self.on_lock(succ_num)
                 self.l = self.open_app()
-            return succ_num
-
+            return t
 
 
     # 循环开锁
     def lock(self):
         self.l = self.open_app()
         count_num = 10000  #  设定的开锁总数统计
-        succ_num = 1  # 开锁成功次数
         for t in range(1,count_num):
-            succ_num = self.on_lock(succ_num)
+            self.on_lock(t)
 
 
 

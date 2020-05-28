@@ -15,10 +15,10 @@ def desired():
         'resetKeyboard': True,  # 重置输入法到初始状态
         'deviceName': 'WTKDU16C07002694',
         # 'deviceName':'127.0.0.1:62001',
-        # 'appPackage': 'com.upqing.sunflower',
-        'appPackage': 'com.tencent.mm',
-        # 'appActivity': '.MainActivity',
-        'appActivity': '.ui.LauncherUI'
+        'appPackage': 'com.upqing.sunflower',
+        # 'appPackage': 'com.tencent.mm',
+        'appActivity': '.MainActivity',
+        # 'appActivity': '.ui.LauncherUI'
 
     }
     driver = webdriver.Remote(ServerUrl, desired_caps)
