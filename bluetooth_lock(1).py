@@ -88,7 +88,9 @@ class UnLock():
             except:
                 self.l = self.open_app()
                 t = 1
+                self.swipe_num = 0
             return t
+
 
 
     # 循环开锁
