@@ -18,10 +18,11 @@ from time import sleep
 logger = logger(__name__, Cmdlevel=logging.INFO, Filelevel=logging.INFO)
 class UnLock():
     def __init__(self):
-        self.swipe_num = 0
+        pass
 
     # 打开APP
     def open_app(self):
+        self.swipe_num = 0
         driver = desired()
         base = BaseView(driver)
         return base
@@ -54,10 +55,9 @@ class UnLock():
                 confirm_text.click()
                 if t%4 != 0:
                     logger.info("第{}把门锁开锁失败".format(t % 4))
-                    return t % 4
                 else:
                     logger.info("第4把门锁开锁失败")
-                    return 4
+                return t%4
 
             #开锁成功按照正常流程进行
             except:
@@ -70,8 +70,8 @@ class UnLock():
                 # 每滑动一次，就在原来的基础上+1
                 self.swipe_num +=1
                 print(("第{}次滑动").format(self.swipe_num))
-                # 滑动到第4次时，就点击手机屏幕上第二个“立即开锁”按钮
-                if self.swipe_num==4:
+                # 滑动到第5次时，就点击手机屏幕上第二个“立即开锁”按钮
+                if self.swipe_num==5:
                     self.unlock_click(1)
                     sleep(30)
                     # 向下滑,门锁列表回到最顶部
@@ -86,12 +86,11 @@ class UnLock():
                 confirm_text =  self.l.wait_find_element(By.XPATH, "//*[@text='确定']")
                 confirm_text.click()
             except:
-                self.l = self.open_app()
-                t = 1
-                self.swipe_num = 0
-            return t
-
-
+                # self.l = self.open_app()
+                # t = 1
+                # self.swipe_num = 0
+                self.lock()
+            # return t
 
     # 循环开锁
     def lock(self):
