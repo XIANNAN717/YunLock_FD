@@ -3,12 +3,17 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 from config import global_config
 from public.common.desired_caps import desired
-
+import os
+import allure
+import uuid
+from public.common.picture_recognition import PictureRecognition
 img_path = global_config.Images_path
+
 
 class BaseView():
     def __init__(self,driver):
         self.driver = driver
+        self.image_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__))) + '/data/image/'
 
     def wait_activity(self,waitActivity,time):
         """
@@ -117,8 +122,35 @@ class BaseView():
         for i in range(n):
             self.driver.swipe(x1, y1, x2, y1, t)
 
+    def touch_tap(self, x, y, duration=100):  # 点击坐标  ,x1,x2,y1,y2,duration
+        '''
+        method explain:点击坐标
+        parameter explain：【x,y】坐标值,【duration】:给的值决定了点击的速度
+        Usage:
+            device.touch_coordinate(277,431)      #277.431为点击某个元素的x与y值
+        '''
+        screen_width = self.driver.get_window_size()['width']  # 获取当前屏幕的宽
+        screen_height = self.driver.get_window_size()['height']  # 获取当前屏幕的高
+        a = (float(x) / screen_width) * screen_width
+        x1 = int(a)
+        b = (float(y) / screen_height) * screen_height
+        y1 = int(b)
+        print("x1,y1",x1,y1)
+        self.driver.tap([(x1, y1), (x1, y1)], duration)
 
-
+    def click_img(self,img_name):
+        """
+        传入图片名，可点击图片。图片路径与名字不能包含中文
+        :param img_name:
+        :return:
+        """
+        with allure.step('步骤：点击图片{img_name}'.format(img_name=img_name)):
+            img_name = self.image_path + img_name
+            sereen_all_filename = str(uuid.uuid1())+'screen_all.png'
+            self.driver.get_screenshot_as_file(sereen_all_filename)
+            x,y = PictureRecognition.matchImg(img_name, sereen_all_filename)
+            print("x,y",x,y)
+            self.touch_tap(x,y)
 
 if __name__ == '__main__':
     driver = desired()
