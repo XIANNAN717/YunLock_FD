@@ -7,7 +7,7 @@ import os
 import allure
 import uuid
 from public.common.picture_recognition import PictureRecognition
-
+from  public.common.adb_shell import AdbShell
 
 img_path = global_config.Images_path
 
@@ -150,8 +150,8 @@ class BaseView():
             sereen_all_filename = str(uuid.uuid1())+'screen_all.png'
             self.driver.get_screenshot_as_file(sereen_all_filename)
             x,y = PictureRecognition.matchImg(img_name, sereen_all_filename)
-            print('x,y',x,y)
-            self.touch_tap(x,y)
+            AdbShell.tap(x, y)
+            #self.touch_tap(x,y)
 
 if __name__ == '__main__':
     driver = desired()

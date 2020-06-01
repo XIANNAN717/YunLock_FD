@@ -10,15 +10,12 @@ def desired():
         'noReset': True,  # 驱动APP，不要清除app里的原有的数据
         'fullReset' : False,
         'platformName': 'Android',
-        'platformVersion': '5.1',
+        'platformVersion': '8.0',
         # 'unicodeKeyboard': True,  # 使用Unicode输入法
-        'resetKeyboard': True,  # 重置输入法到初始状态
-       #'deviceName': 'WTKDU16C07002694',
-        'deviceName':'127.0.0.1:62001',
-        'appPackage': 'com.upqing.sunflower',
-        # 'appPackage': 'com.tencent.mm',
-        'appActivity': '.MainActivity',
-        # 'appActivity': '.ui.LauncherUI'
+        # 'resetKeyboard': True,  # 重置输入法到初始状态
+       'deviceName': 'WTKDU16C07002694',
+        'appPackage': 'com.tencent.mm',
+        'appActivity': '.ui.LauncherUI'
 
     }
     driver = webdriver.Remote(ServerUrl, desired_caps)
