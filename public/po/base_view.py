@@ -7,8 +7,9 @@ import os
 import allure
 import uuid
 from public.common.picture_recognition import PictureRecognition
-img_path = global_config.Images_path
 
+
+img_path = global_config.Images_path
 
 class BaseView():
     def __init__(self,driver):
