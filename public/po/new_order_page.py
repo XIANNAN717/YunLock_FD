@@ -7,7 +7,7 @@ import logging
 from log.log import logger
 from public.common.desired_caps import desired
 from public.common.do_excel import ReadExcel
-from public.po.login_page import LoginPage
+from public.po.login_page import OpenWinxin
 from public.common.adb_shell import AdbShell
 from time import sleep
 

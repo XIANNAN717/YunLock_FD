@@ -15,34 +15,35 @@ import logging
 from log.log import logger
 from public.common.desired_caps import desired
 from public.common.do_excel import ReadExcel
-from public.po.login_page import LoginPage
+from public.po.login_page import OpenWinxin
 from public.common.adb_shell import AdbShell
 from public.po.new_order_page import NewOderPage
+from time import sleep
 
 # 日志类的实例化
 logger = logger(__name__, Cmdlevel=logging.INFO, Filelevel=logging.INFO)
 
 class TemporaryAuthorization(BaseView):
     # 临时授权按钮xpath
-    temporary_authorization_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.widget.Button[1]"
+    temporary_authorization_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.webkit.WebView/android.view.View[2]/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View"
     # 添加授权按钮xpath
-    add_authorization_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[2]"
+    add_authorization_btn_xpath = "\\*[@text = '新建授权']"
     # 入住时间xpath
-    checkin_time_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.widget.Button[1]"
+    checkin_time_xpath = ""
     # 选择时间“确定”按钮
-    time_confirm = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.Button[2]"
+    time_confirm = ""
     # 退房时间
-    checkout_time_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View/android.view.View[2]/android.widget.Button[2]"
+    checkout_time_xpath = ""
     # 被授权人姓名
-    authorized_name_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]"
+    authorized_name_xpath = ""
     # 被授权人手机号
-    authorized_mobile_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]"
+    authorized_mobile_xpath = ""
     # 被授权人身份按钮
-    authorized_identity_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]"
+    authorized_identity_btn_xpath = ""
     # 被授权人身份（列表第二个元素，保洁）
-    authorized_identity_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]"
+    authorized_identity_xpath = ""
     # 提交授权确定按钮
-    confirm_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.widget.Button"
+    confirm_btn_xpath = ""
 
     temporary_authorization_btn_element = (By.XPATH , temporary_authorization_btn_xpath)  # 临时授权按钮元素
     add_authorization_btn_element = (By.XPATH , add_authorization_btn_xpath)  # 添加临时授权按钮元素
@@ -64,8 +65,8 @@ class TemporaryAuthorization(BaseView):
 
     # “添加临时授权”按钮
     def add_authorization_btn(self):
-        add_authorization_btn = self.wait_find_element(*self.add_authorization_btn_element)
-        add_authorization_btn.click()
+        sleep(2)
+        self.click_img(r'entrance\ab.png')
         logger.info("add_authorization_btn is click")
 
     # 入住开始时间
@@ -115,21 +116,19 @@ class TemporaryAuthorization(BaseView):
     # 临时授权流程
     def temporary_authorization_process(self):
         try:
-            YunLock_new_order = NewOderPage(self.driver)
-            YunLock_new_order.choose_shop()
             self.temporary_authorization_btn()
             self.add_authorization_btn()
-            self.checkin_time()
-            self.confirm_btn()
-            self.checkout_time()
-            self.confirm_btn()
-            authorized_name_value = ReadExcel("temporary_authorization.xlsx", "Sheet1").read_excel(1, 0)
-            self.authorized_name_input_box(authorized_name_value)
-            authorized_mobile_value = ReadExcel("temporary_authorization.xlsx", "Sheet1").read_excel(1, 1)
-            self.authorized_mobile_input_box(authorized_mobile_value)
-            self.authorized_identity_btn()
-            self.confirm_btn()
-            return "临时授权成功"
+            # self.checkin_time()
+            # self.confirm_btn()
+            # self.checkout_time()
+            # self.confirm_btn()
+            # authorized_name_value = ReadExcel("temporary_authorization.xlsx", "Sheet1").read_excel(1, 0)
+            # self.authorized_name_input_box(authorized_name_value)
+            # authorized_mobile_value = ReadExcel("temporary_authorization.xlsx", "Sheet1").read_excel(1, 1)
+            # self.authorized_mobile_input_box(authorized_mobile_value)
+            # self.authorized_identity_btn()
+            # self.confirm_btn()
+            # return "临时授权成功"
         except:
             print("临时授权失败")
 
@@ -137,20 +136,19 @@ class TemporaryAuthorization(BaseView):
 
 if __name__ == '__main__':
     driver = desired()
-    App = LoginPage(driver)
-    App.login()
+    App = OpenWinxin(driver)
+    App.click_FD()
     TA = TemporaryAuthorization(driver)
-    YunLock_new_order = NewOderPage(driver)
-    YunLock_new_order.choose_shop()
-    TA.temporary_authorization_btn()
-    TA.add_authorization_btn()
-    TA.checkin_time()
-    TA.confirm_btn()
-    TA.checkout_time()
-    TA.confirm_btn()
-    authorized_name_value = ReadExcel("temporary_authorization.xlsx", "Sheet1").read_excel(1, 0)
-    TA.authorized_name_input_box(authorized_name_value)
-    authorized_mobile_value = ReadExcel("temporary_authorization.xlsx", "Sheet1").read_excel(1, 1)
-    TA.authorized_mobile_input_box(authorized_mobile_value)
-    TA.authorized_identity_btn()
-    TA.confirm_btn()
+    # TA.temporary_authorization_btn()
+    # TA.add_authorization_btn()
+    # TA.checkin_time()
+    # TA.confirm_btn()
+    # TA.checkout_time()
+    # TA.confirm_btn()
+    # authorized_name_value = ReadExcel("temporary_authorization.xlsx", "Sheet1").read_excel(1, 0)
+    # TA.authorized_name_input_box(authorized_name_value)
+    # authorized_mobile_value = ReadExcel("temporary_authorization.xlsx", "Sheet1").read_excel(1, 1)
+    # TA.authorized_mobile_input_box(authorized_mobile_value)
+    # TA.authorized_identity_btn()
+    # TA.confirm_btn()
+    TA.temporary_authorization_process()
