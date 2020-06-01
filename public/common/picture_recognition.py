@@ -24,7 +24,7 @@ class PictureRecognition(object):
         imsrc = ac.imread(imgsrc)
         imobj = ac.imread(imgobj)
         match_result = ac.find_template(imsrc, imobj, confidence)
-        #os.remove(imgsrc)
+        os.remove(imgsrc)
         # match_result为None或不为None时满足自定义条件
         if not match_result or match_result and match_result['confidence'] < 0.8:
             imgobj_name = imgobj.split('data/image/')[1]
