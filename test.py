@@ -18,8 +18,8 @@ class TemporaryAuthorization(BaseView):
     # shop_xpath = "//*[@class='android.webkit.WebView']/android.widget.View/android.widget.View"
     # shop_xpath = "//*[@class='android.webkit.WebView']/View/View"
     # shop_xpath = "//*[@resource-id='com.tencent.mm:id/kw']/../following-sibling::*[1]//android.widget.View/android.widget.View"
-    shop_xpath = "//*[@resource-id='com.tencent.mm:id/kw']/../following-sibling::*[1]//View/View"
-    # shop_xpath = "//*[@text='测试门店001']" # Y
+    # shop_xpath = "//*[@resource-id='com.tencent.mm:id/kw']/../following-sibling::*[1]//View/View"
+    shop_xpath = "//*[@text='订单管理']" # Y
 
 
     shop_btn_element = (By.XPATH , shop_xpath)  # 临时授权按钮元素

@@ -20,41 +20,32 @@ class NewOderPage(BaseView):
     新建订单页面的所有的xpth、元素
     """
     # 订单管理
-    oder_management_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View"
-    # 选择门店
-    choose_shop_xapth = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]"
-    # 测试门店第二个门店
-    test_shop_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]"
-    # 新建订单按钮
-    new_oder_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.Button"
+    oder_management_xpath = "//*[@text='订单管理']"
     # 选择房间
-    choose_room_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ScrollView/android.view.View[1]/android.view.View[1]"
+    choose_room_xpath = ""
     # 测试房源第一个
-    test_room_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]"
+    test_room_xpath = ""
     # 入住时间
-    checkin_time_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ScrollView/android.view.View[1]/android.view.View[2]/android.widget.Button[1]"
+    checkin_time_xpath = ""
     # 选择时间确认按钮
-    time_confirm = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.Button[2]"
+    time_confirm = ""
     # 退房时间
-    checkout_time_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ScrollView/android.view.View[1]/android.view.View[2]/android.widget.Button[2]"
+    checkout_time_xpath = ""
     # 入住人姓名
-    tenant_name_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ScrollView/android.widget.EditText[1]"
+    tenant_name_xpath = ""
     # 入住人手机号
-    tenant_mobile_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ScrollView/android.widget.EditText[2]"
+    tenant_mobile_xpath = ""
     # 订单来源
-    order_source_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ScrollView/android.view.View[5]"
+    order_source_xpath = ""
     # 房费总计
-    room_rate_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ScrollView/android.widget.EditText[3]"
+    room_rate_xpath = ""
     # 备注信息
-    remark_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ScrollView/android.widget.EditText[4]"
+    remark_xpath = ""
     # 确定按钮
-    confirm_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.widget.Button"
+    confirm_btn_xpath = ""
 
     # 元素定位
     oder_management_btn_element = (By.XPATH, oder_management_xpath)  # 订单管理
-    shop_btn_element = (By.XPATH, choose_shop_xapth)  # 选择门店
-    test_shop_element = (By.XPATH, test_shop_xpath)  # 第二个门店
-    new_oder_btn_element = (By.XPATH, new_oder_btn_xpath)  # 新建订单按钮
     choose_room_element = (By.XPATH, choose_room_xpath)  # 选择房间
     test_room_element = (By.XPATH, test_room_xpath)  # 第一个房间
     checkin_time_element = (By.XPATH, checkin_time_xpath)  # 入住时间
@@ -76,22 +67,11 @@ class NewOderPage(BaseView):
         oder_management_btn.click()
         logger.info("OderManagementBtn is click")
 
-    # “选择门店”按钮
-    def choose_shop(self):
-        shop_btn = self.wait_find_element(*self.shop_btn_element)
-        shop_btn.click()
-        # print('开始滑动')
-        # sleep(5)
-        # self.swipe_up(450, 1500, 450, 1200)
-        shop_name = self.wait_find_element(*self.test_shop_element)
-        shop_name.click()
-        logger.info("ChooseShopBtn is click")
-
-    # “新建订单”按钮
-    def new_oder_btn(self):
-        new_oder_btn = self.wait_find_element(*self.new_oder_btn_element)
-        new_oder_btn.click()
-        logger.info("NewOderBtn is click")
+    # 新建订单按钮
+    def click_new_order(self):
+        sleep(3)
+        self.click_img(r'entrance\NO.png')
+        logger.info("new_order_Btn is click")
 
     # 选择房间
     def choose_room(self):
@@ -147,8 +127,6 @@ class NewOderPage(BaseView):
             tenant_name_value = ReadExcel("new_order.xlsx", "Sheet1").read_excel(1, 0)
             tenant_mobile_value = ReadExcel("new_order.xlsx", "Sheet1").read_excel(1, 1)
             self.oder_management()
-            # self.choose_shop()
-            self.new_oder_btn()
             self.choose_room()
             self.checkin_time()
             self.checkout_time()
@@ -164,7 +142,9 @@ class NewOderPage(BaseView):
 
 if __name__ == '__main__':
     driver = desired()
-    App = LoginPage(driver)
-    App.login()
-    YunLock_new_order = NewOderPage(driver)
-    YunLock_new_order.new_order()
+    App = OpenWinxin(driver)
+    App.open_weixin()
+    App.click_FD()
+    FD_new_order = NewOderPage(driver)
+    FD_new_order.oder_management()
+    FD_new_order.click_new_order()
