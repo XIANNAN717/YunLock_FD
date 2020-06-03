@@ -14,7 +14,7 @@ img_path = global_config.Images_path
 class BaseView():
     def __init__(self,driver):
         self.driver = driver
-        self.image_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__))) + '/data/image/'
+        self.image_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__))) + '/data/images/'
 
     def wait_activity(self,waitActivity,time):
         """
