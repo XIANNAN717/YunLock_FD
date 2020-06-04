@@ -22,32 +22,32 @@ class NewOderPage(BaseView):
     # 订单管理
     oder_management_xpath = "//*[@text='订单管理']"
     # 选择房间
-    choose_room_xpath = ""
-    # 测试房源第一个
-    test_room_xpath = ""
+    choose_room_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.webkit.WebView/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.view.View[2]/android.widget.Image"
+    # 选择房间确定按钮
+    room_confirm_xpath = "//*[@text='确定']"
     # 入住时间
-    checkin_time_xpath = ""
+    checkin_time_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[3]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[1]/android.view.View[3]/android.view.View[1]"
     # 选择时间确认按钮
-    time_confirm = ""
+    time_confirm = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[3]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[14]"
     # 退房时间
-    checkout_time_xpath = ""
+    checkout_time_xpath = "//*[@text='请选择离店时间']"
     # 入住人姓名
-    tenant_name_xpath = ""
+    tenant_name_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.webkit.WebView/android.view.View[5]/android.view.View/android.view.View"
     # 入住人手机号
-    tenant_mobile_xpath = ""
+    tenant_mobile_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.webkit.WebView/android.view.View[7]/android.view.View/android.view.View"
     # 订单来源
-    order_source_xpath = ""
+    order_source_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.webkit.WebView/android.view.View[9]/android.view.View[2]"
     # 房费总计
-    room_rate_xpath = ""
+    room_rate_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.webkit.WebView/android.view.View[11]/android.view.View/android.view.View"
     # 备注信息
-    remark_xpath = ""
+    remark_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.webkit.WebView/android.view.View[13]/android.view.View/android.view.View"
     # 确定按钮
-    confirm_btn_xpath = ""
+    confirm_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.webkit.WebView/android.view.View[14]"
 
     # 元素定位
     oder_management_btn_element = (By.XPATH, oder_management_xpath)  # 订单管理
     choose_room_element = (By.XPATH, choose_room_xpath)  # 选择房间
-    test_room_element = (By.XPATH, test_room_xpath)  # 第一个房间
+    room_confirm_element = (By.XPATH, room_confirm_xpath)  # 第一个房间
     checkin_time_element = (By.XPATH, checkin_time_xpath)  # 入住时间
     time_confirm_element = (By.XPATH, time_confirm)  # 选择时间的确认按钮
     checkout_time_element = (By.XPATH, checkout_time_xpath)  # 退房时间
@@ -76,11 +76,8 @@ class NewOderPage(BaseView):
     # 选择房间
     def choose_room(self):
         choose_room = self.wait_find_element(*self.choose_room_element)
-        # print(choose_room)
         choose_room.click()
-        room_name = self.wait_find_element(*self.test_room_element)
-        # print(room_name)
-        room_name.click()
+        self.wait_find_element(*self.room_confirm_element).click()
         logger.info("ChooseRoom is click")
 
     # 入住开始时间
@@ -93,7 +90,8 @@ class NewOderPage(BaseView):
     # 入住结束时间
     def checkout_time(self):
         checkout_time = self.wait_find_element(*self.checkout_time_element)
-        checkout_time.click()
+        # checkout_time.click()
+        self.unlock_swipe_up()
         self.wait_find_element(*self.time_confirm_element).click()
         logger.info("checkin_time is click")
 
@@ -127,9 +125,10 @@ class NewOderPage(BaseView):
             tenant_name_value = ReadExcel("new_order.xlsx", "Sheet1").read_excel(1, 0)
             tenant_mobile_value = ReadExcel("new_order.xlsx", "Sheet1").read_excel(1, 1)
             self.oder_management()
-            self.choose_room()
-            self.checkin_time()
-            self.checkout_time()
+            self.click_new_order()
+            # self.choose_room()
+            # self.checkin_time()
+            # self.checkout_time()
             self.tenant_name(tenant_name_value)
             self.tenant_mobile(tenant_mobile_value)
             self.confirm_button()
@@ -146,5 +145,6 @@ if __name__ == '__main__':
     App.open_weixin()
     App.click_FD()
     FD_new_order = NewOderPage(driver)
-    FD_new_order.oder_management()
-    FD_new_order.click_new_order()
+    # FD_new_order.oder_management()
+    # FD_new_order.click_new_order()
+    FD_new_order.new_order()

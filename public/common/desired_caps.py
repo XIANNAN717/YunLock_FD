@@ -11,14 +11,15 @@ def desired():
         'fullReset' : False,
         'platformName': 'Android',
         'platformVersion': '8.0',
-        # 'unicodeKeyboard': True,  # 使用Unicode输入法
-        # 'resetKeyboard': True,  # 重置输入法到初始状态
+        'unicodeKeyboard': True,  # 使用Unicode输入法
+        'resetKeyboard': True,  # 重置输入法到初始状态
        'deviceName': 'WTKDU16C07002694',
         'appPackage': 'com.tencent.mm',
         'appActivity': '.ui.LauncherUI'
 
     }
     driver = webdriver.Remote(ServerUrl, desired_caps)
+    print("打开微信成功")
     return driver
 
 

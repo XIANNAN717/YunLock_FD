@@ -25,7 +25,7 @@ logger = logger(__name__, Cmdlevel=logging.INFO, Filelevel=logging.INFO)
 
 class TemporaryAuthorization(BaseView):
     # 临时授权按钮xpath
-    temporary_authorization_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.webkit.WebView/android.view.View[2]/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View"
+    temporary_authorization_btn_xpath = "//*[@text='临时授权']"
     # 添加授权按钮xpath
     add_authorization_btn_xpath = "//*[@text = '新建授权']"
     # 入住时间xpath
@@ -128,6 +128,8 @@ class TemporaryAuthorization(BaseView):
             # self.authorized_mobile_input_box(authorized_mobile_value)
             # self.authorized_identity_btn()
             # self.confirm_btn()
+            sleep(2)
+            driver.close_app()
             # return "临时授权成功"
         except:
             print("临时授权失败")
@@ -152,3 +154,5 @@ if __name__ == '__main__':
     # TA.authorized_identity_btn()
     # TA.confirm_btn()
     TA.temporary_authorization_process()
+
+    # driver.terminate_app("com.tencent.mm")

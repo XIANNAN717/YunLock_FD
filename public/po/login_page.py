@@ -16,12 +16,12 @@ class OpenWinxin(BaseView):
     # 打开微信
     def open_weixin(self):
         try:
-            sleep(5)
+            sleep(3)
             # 下滑，进入微信小程序页面
             self.swipe_down()
-            logger.info("打开微信，进入小程序页面成功")
+            logger.info("进入微信小程序页面成功")
         except:
-            logger.info("打开微信失败")
+            logger.info("进入微信小程序页面失败")
 
 
 
@@ -38,4 +38,5 @@ class OpenWinxin(BaseView):
 if __name__ == '__main__':
     driver = desired()
     weixin = OpenWinxin(driver)
+    print("在login_page文件下")
     weixin.click_FD()
